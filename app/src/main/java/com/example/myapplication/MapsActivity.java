@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -105,7 +107,7 @@ private static final List<PatternItem> PATTERN_POLYGON_ALPHA = Arrays.asList(GAP
 // Create a stroke pattern of a dot followed by a gap, a dash, and another gap.
 private static final List<PatternItem> PATTERN_POLYGON_BETA =
         Arrays.asList(DOT, GAP, DASH, GAP);
-
+private Button detect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +132,14 @@ private static final List<PatternItem> PATTERN_POLYGON_BETA =
         mapFragment.getMapAsync(this);
 
         markers = new ArrayList<>();
+        detect = (Button) findViewById(R.id.go_detect);
+        detect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),Homepage.class);
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -181,7 +191,7 @@ private static final List<PatternItem> PATTERN_POLYGON_BETA =
         map_editable = googleMap;
         // Add polylines to the map.
         // Polylines are useful to show a route or some other connection between points.
-        Polyline polyline1 = map_editable.addPolyline(new PolylineOptions()
+        /*Polyline polyline1 = map_editable.addPolyline(new PolylineOptions()
                 .clickable(true)
                 .add(
                         new LatLng(-35.016, 143.321),
@@ -228,14 +238,15 @@ private static final List<PatternItem> PATTERN_POLYGON_BETA =
                         new LatLng(-17.785, 122.258),
                         new LatLng(-12.4258, 130.7932)));
         polygon2.setTag("beta");
-        stylePolygon(polygon2);
+        stylePolygon(polygon2);*/
 
 
         // Set listeners for click events.
-        map_editable.setOnPolylineClickListener(this);
-        map_editable.setOnPolygonClickListener(this);
+        //map_editable.setOnPolylineClickListener(this);
+        //map_editable.setOnPolygonClickListener(this);
         map_editable.setOnMapClickListener(this);
         map_editable.setOnMarkerClickListener(this);
+
 
         map_editable.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
@@ -415,6 +426,7 @@ private static final List<PatternItem> PATTERN_POLYGON_BETA =
                                 map_editable.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                         new LatLng(mLastKnownLocation.getLatitude(),
                                                 mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
+
                             }
                         } else {
                             Log.d("Rane", "Current location is null. Using defaults.");

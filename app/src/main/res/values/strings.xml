@@ -1,8 +1,15 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="app_name">Crop Identification</string>
+    <string name="title_activity_maps">Crop Identification</string>
     <string name="default_info_title">Default Location</string>
     <string name="default_info_snippet">No places found, because location permission is disabled.</string>
     <string name="option_get_place">Get place</string>
     <string name="pick_place">Choose a place</string>
+    <string name="next">next</string>
+    <string name="click">Click</string>
+    <string name="upload">UPLOAD</string>
+    <string name="detect">DETECT</string>
+    <string name="name">NAME</string>
+    <string name="proceed">Proceed</string>
+    <string name="disease">Disease</string>
 </resources>
